@@ -1,0 +1,238 @@
+@import "variables";
+@import "mixins";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    height: 100%;
+    background: url('../images/bg-intro-desktop.png') no-repeat, $red;
+    color: white;
+
+    @include mQ(576px) {
+        background: url('../images/bg-intro-mobile.png') no-repeat, $red;
+
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: max-content;
+    grid-template-areas:
+        "lefter righter";
+
+    @include mQ(576px) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+            "lefter"
+            " righter";
+    }
+}
+
+.left-section,
+.right-section {
+
+    //    border: 1px solid black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mQ(576px) {
+        height: 75vh;
+
+    }
+}
+
+.left-section {
+
+
+    grid-area: lefter;
+    padding-left: 130px;
+    padding-right: 20px;
+
+    @include mQ(576px) {
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 0;
+        width: calc(100vw - 50px);
+
+
+    }
+
+    p:first-child {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        line-height: 52px;
+
+        @include mQ(576px) {
+            font-size: 2rem;
+            text-align: center;
+            line-height: 38px;
+            margin-top: 0;
+        }
+    }
+
+    p:last-child {
+
+        @include mQ(576px) {
+
+            text-align: center;
+
+            margin-bottom: 0;
+
+        }
+    }
+
+}
+
+.right-section {
+    grid-area: righter;
+    align-items: flex-start;
+
+
+    .price {
+        padding: 15px 100px;
+        background: $blue;
+        border-radius: 11px;
+        font-weight: 400;
+        box-shadow: 0 7px hsla(249, 10%, 26%, 0.404);
+
+        @include mQ(576px) {
+
+            font-size: 15px;
+            padding: 13px 50px;
+            margin: 0px 25px;
+            width: calc(100vw - 150px);
+            text-align: center;
+        }
+
+        span {
+            font-weight: 500;
+        }
+    }
+
+
+    form {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 7px hsla(249, 10%, 26%, 0.404);
+        background: white;
+        width: 524.89px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 11px;
+
+        @include mQ(576px) {
+            margin: 25px 25px;
+
+            max-width: calc(100vw - 50px);
+        }
+
+        input,
+        button {
+            display: block;
+            margin: 15px 30px;
+            height: 35px;
+            border-radius: 5px;
+
+            @include mQ(576px) {
+                margin: 7.5px 15px;
+            }
+        }
+
+        input {
+            outline: none;
+            border: 1px solid $grayishBlue;
+            padding-left: 20px;
+            margin-bottom: 5px;
+
+            @include mQ(576px) {
+                padding-left: 10px;
+            }
+
+            &::placeholder {
+
+                font-weight: 600;
+            }
+
+        }
+
+        button {
+            height: 45px;
+            padding-bottom: auto;
+            padding-top: auto;
+            text-transform: uppercase;
+            color: white;
+            background: $green;
+            border: none;
+            outline: none;
+            letter-spacing: 1.5px;
+
+
+
+            &:hover {
+                opacity: 0.8;
+                cursor: pointer;
+            }
+        }
+
+
+        p {
+            margin: 15px 30px;
+            height: 35px;
+            color: $grayishBlue;
+            margin-top: 0;
+            font-size: 12px;
+            text-align: center;
+
+            @include mQ(576px) {
+                height: 45px;
+            }
+
+            span {
+                color: $red;
+                font-weight: 700;
+            }
+        }
+    }
+
+}
+
+form .error {
+    display: none;
+    color: $red !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: right !important;
+    height: 20px !important;
+    font-weight: 500 !important;
+    margin-right: 30px !important;
+    margin-top: -25px !important;
+
+    @include mQ(576px) {
+        margin-right: 15px !important;
+    }
+}
+
+.alert-icon {
+    display: none;
+    height: 24px;
+    margin: 0px 40px;
+    transform: translateY(-150%);
+    padding: 0;
+
+    img {
+        float: right;
+        width: 24px;
+        height: 24px;
+    }
+
+    @include mQ(576px) {
+        margin: 0px 25px;
+    }
+}
